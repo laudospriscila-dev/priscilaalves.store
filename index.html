@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Priscila Alves Maia | Imóveis Prontos no Brasil</title>
+  <meta name="description" content="Vitrine de apartamentos prontos e casas prontas. Atendimento direto no WhatsApp.">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:rgba(15,23,42,.12);
+      --card:#ffffff;
+      --shadow: 0 18px 50px rgba(2,6,23,.12);
+      --radius:18px;
+
+      --green:#16a34a;
+      --red:#dc2626;
+      --blue:#2563eb;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px 18px 70px}
+
+    /* topbar */
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:12px 0 18px;border-bottom:1px solid var(--line);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;border:1px solid var(--line)}
+    .brand h1{font-size:16px;margin:0;line-height:1.2}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+    .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border:1px solid var(--line);border-radius:999px;
+      text-decoration:none;font-size:13px;color:var(--text);background:#fff;
+    }
+    .pill:hover{box-shadow:0 10px 24px rgba(2,6,23,.10)}
+    .pill strong{font-weight:700}
+
+    /* hero */
+    .hero{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:22px;
+      padding:26px 0 8px;
+      align-items:center;
+    }
+    .heroCard{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 10px 30px rgba(2,6,23,.06);
+      background:linear-gradient(180deg, rgba(22,163,74,.06), rgba(255,255,255,0));
+    }
+    .hero h2{margin:0 0 10px;font-size:34px;letter-spacing:-.02em}
+    .hero p{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
+    .badges{margin-top:12px;color:#0f172a;font-weight:700;font-size:13px}
+    .ctaRow{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:13px 16px;border-radius:12px;
+      text-decoration:none;font-weight:800;font-size:14px;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+    .btn.whats{background:var(--green);color:#fff}
+    .btn.red{background:var(--red);color:#fff}
+    .btn.outline{background:#fff;border-color:var(--line);color:var(--text)}
+    .btn:hover{filter:brightness(.98)}
+    .heroMedia{
+      border-radius:var(--radius);
+      overflow:hidden;border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      min-height:280px;
+      background:#f8fafc;
+    }
+    .heroMedia img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* filters */
+    .filters{
+      margin:20px 0 8px;
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    }
+    .seg{
+      display:flex;gap:8px;flex-wrap:wrap;
+      padding:8px;border:1px solid var(--line);border-radius:999px;background:#fff;
+    }
+    .seg button{
+      border:0;background:transparent;padding:10px 12px;border-radius:999px;
+      font-weight:800;font-size:13px;color:var(--muted);cursor:pointer;
+    }
+    .seg button.active{background:rgba(37,99,235,.10);color:#0f172a}
+    .search{
+      flex:1;min-width:240px;max-width:420px;
+      display:flex;gap:10px;align-items:center;justify-content:flex-end;
+    }
+    .search input{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+      font-size:14px;outline:none;
+    }
+
+    /* grid */
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:repeat(2,1fr)} .hero{grid-template-columns:1fr} }
+    @media (max-width: 620px){ .grid{grid-template-columns:1fr} .hero h2{font-size:28px} }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:var(--card);
+      box-shadow:0 12px 30px rgba(2,6,23,.06);
+      display:flex;flex-direction:column;
+      min-height: 420px;
+    }
+    .thumb{height:210px;background:#f1f5f9;position:relative}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .tag{
+      position:absolute;left:12px;top:12px;
+      background:rgba(15,23,42,.85);color:#fff;
+      padding:8px 10px;border-radius:999px;font-size:12px;font-weight:800;
+      backdrop-filter: blur(6px);
+    }
+    .content{padding:14px 14px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+    .title{margin:0;font-size:16px;letter-spacing:-.01em}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .price{font-size:16px;font-weight:900}
+    .desc{color:var(--muted);font-size:13px;line-height:1.5;flex:1}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .actions .btn{padding:12px 14px;border-radius:12px;font-size:13px}
+
+    /* modal */
+    .modalBackdrop{
+      position:fixed;inset:0;background:rgba(2,6,23,.55);
+      display:none;align-items:center;justify-content:center;
+      padding:20px;z-index:9999;
+    }
+    .modal{
+      width:min(1040px, 100%);
+      background:#fff;border-radius:22px;
+      overflow:hidden;border:1px solid rgba(255,255,255,.2);
+      box-shadow: 0 40px 120px rgba(2,6,23,.35);
+      display:grid;grid-template-columns:1.1fr .9fr;
+    }
+    @media (max-width: 980px){ .modal{grid-template-columns:1fr} }
+    .mLeft{background:#0b1220;position:relative}
+    .mRight{padding:18px 18px 16px}
+    .close{
+      position:absolute;right:12px;top:12px;
+      width:44px;height:44px;border-radius:999px;border:0;
+      background:rgba(255,255,255,.15);color:#fff;font-weight:900;
+      cursor:pointer;
+      backdrop-filter: blur(8px);
+    }
+    .galleryMain{
+      height:420px;
+      background:#0b1220;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .galleryMain img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumbs{
+      display:flex;gap:10px;flex-wrap:wrap;
+      padding:12px;background:#0b1220;border-top:1px solid rgba(255,255,255,.14);
+    }
+    .tbtn{
+      width:86px;height:58px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.16);
+      cursor:pointer;opacity:.85;
+    }
+    .tbtn.active{outline:2px solid rgba(34,197,94,.9);opacity:1}
+    .tbtn img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .mTitle{margin:0 0 6px;font-size:20px;letter-spacing:-.02em}
+    .mSub{margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.4}
+    .mRow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .chip{
+      border:1px solid var(--line);border-radius:999px;padding:9px 10px;
+      font-size:12px;font-weight:800;color:#0f172a;background:#fff;
+    }
+    .mPrice{font-size:18px;font-weight:950;margin:10px 0}
+    .mDesc{color:#334155;font-size:14px;line-height:1.6;margin:10px 0 12px}
+    .list{
+      margin:0;padding-left:18px;color:#334155;font-size:14px;line-height:1.6
+    }
+    .mActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .note{
+      margin-top:12px;color:#64748b;font-size:12px;line-height:1.45
+    }
+
+    /* floating whatsapp */
+    .floatWA{
+      position:fixed;right:18px;bottom:18px;z-index:999;
+      display:flex;align-items:center;justify-content:center;
+      width:56px;height:56px;border-radius:999px;
+      background:var(--green);color:#fff;text-decoration:none;
+      box-shadow:0 18px 50px rgba(22,163,74,.35);
+      font-weight:950;font-size:20px;
+    }
+    .floatWA:hover{filter:brightness(.97)}
+    footer{
+      margin-top:42px;padding-top:18px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:13px;line-height:1.55;
+      display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
+    }
+    footer strong{color:#0f172a}
+  </style>
+</head>
+
+<body>
+  <a class="floatWA" target="_blank"
+     href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Vim%20da%20sua%20vitrine%20e%20quero%20ver%20imóveis%20prontos.">
+    🟢
+  </a>
+
+  <div class="wrap">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="brand">
+        <img src="img/logo.png" onerror="this.src='img/hero.jpg'" alt="Priscila Alves Maia">
+        <div>
+          <h1>Priscila Alves Maia • CRECI-GO 38804 • CNAI 46495</h1>
+          <p>Imóveis prontos no Brasil • Atendimento direto no WhatsApp</p>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="pill" target="_blank" href="https://www.instagram.com/priscilaalves_business/"><strong>Instagram</strong></a>
+        <a class="pill" target="_blank" href="https://www.linkedin.com/in/priscila-alves-maia-2bab473a2/"><strong>LinkedIn</strong></a>
+        <a class="pill" target="_blank" href="https://app.conselho.net.br/api2/cartao_visita?cpf=00295932120&regional=5"><strong>Ver credencial</strong></a>
+        <a class="pill" target="_blank"
+           href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20atendimento%20para%20imóveis%20prontos%20(apto/casa).">
+          <strong>WhatsApp</strong> +55 62 99978-7270
+        </a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroCard">
+        <h2>Vitrine de Imóveis Prontos</h2>
+        <p>
+          Apartamentos prontos e casas prontas no Brasil.
+          Caminho sem enrolação: <strong>ver opções → abrir detalhes → falar no WhatsApp</strong>.
+        </p>
+
+        <div class="badges">📍 Goiânia/GO • Atendimento nacional e para brasileiros no exterior</div>
+
+        <div class="ctaRow">
+          <a class="btn whats" target="_blank"
+             href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20ver%20APARTAMENTOS%20PRONTOS.%20Pode%20me%20enviar%20opções%20com%20preço%20e%20localização?">
+            📲 Ver apartamentos prontos
+          </a>
+
+          <a class="btn red" target="_blank"
+             href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20ver%20CASAS%20PRONTAS.%20Pode%20me%20enviar%20opções%20com%20preço%20e%20localização?">
+            🏡 Ver casas prontas
+          </a>
+
+          <a class="btn outline" target="_blank"
+             href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20um%20atendimento%20rápido:%201)%20cidade/bairro%202)%20faixa%20de%20valor%203)%20nº%20de%20quartos%204)%20forma%20de%20pagamento.">
+            ⚡ Atendimento rápido
+          </a>
+        </div>
+      </div>
+
+      <div class="heroMedia">
+        <img src="img/hero.jpg" alt="Imóveis prontos no Brasil">
+      </div>
+    </section>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <div class="seg" aria-label="Filtro por categoria">
+        <button class="active" data-filter="all">Todos</button>
+        <button data-filter="Apartamento">Apartamentos</button>
+        <button data-filter="Casa">Casas</button>
+      </div>
+
+      <div class="search">
+        <input id="q" type="search" placeholder="Buscar por cidade, bairro, código (ex: P001), 3 quartos..." />
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div id="grid" class="grid"></div>
+    </div>
+
+<!-- AVALIAÇÃO DE IMÓVEIS -->
+<section style="margin-top:60px;padding:30px;border:1px solid #e5e7eb;border-radius:18px;">
+  <h2 style="font-size:28px;margin-bottom:12px;">
+    Avaliação de Imóveis • Urbana e Rural (PTAM)
+  </h2>
+
+  <p style="color:#475569;line-height:1.7;">
+    Avaliação técnica baseada em conhecimento de mercado, normas ABNT,
+    COFECI e CRECI-GO, com foco em resultados confiáveis.
+  </p>
+
+  <p style="color:#475569;line-height:1.7;">
+    Elaboração de <strong>PTAM – Parecer Técnico de Avaliação Mercadológica</strong>,
+    amplamente aceito em bancos, justiça, inventários, financiamentos
+    e processos administrativos.
+  </p>
+
+  <ul style="color:#334155;line-height:1.8;">
+    <li>Casas, apartamentos, lotes e terrenos</li>
+    <li>Imóveis comerciais, industriais e rurais</li>
+    <li>Inventários, partilhas e separações</li>
+    <li>Contestação de IPTU, ITBI, ITCD e outros</li>
+  </ul>
+
+  <a class="btn whats" target="_blank"
+     href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20solicitar%20uma%20avaliação%20de%20imóvel%20(PTAM).">
+    📲 Solicitar Avaliação Técnica
+  </a>
+</section>
+
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <strong>Priscila Alves Maia</strong><br>
+        Corretora de Imóveis • CRECI-GO 38804 • Perita Avaliadora • CNAI 46495
+      </div>
+      <div>
+        Contato: <strong>+55 62 99978-7270</strong> (WhatsApp)<br>
+        Link de credencial: app.conselho.net.br (cartão/validação)
+      </div>
+    </footer>
+  </div>
+
+  <!-- MODAL -->
+  <div id="backdrop" class="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <div class="mLeft">
+        <button class="close" id="closeBtn" aria-label="Fechar">✕</button>
+
+        <div class="galleryMain">
+          <img id="mainImg" src="" alt="Foto do imóvel">
+        </div>
+
+        <div id="thumbs" class="thumbs"></div>
+      </div>
+
+      <div class="mRight">
+        <h3 id="mTitle" class="mTitle"></h3>
+        <p id="mSub" class="mSub"></p>
+
+        <div class="mRow" id="chips"></div>
+
+        <div class="mPrice" id="mPrice"></div>
+
+        <div class="mDesc" id="mDesc"></div>
+
+        <ul class="list" id="mList"></ul>
+
+        <div class="mActions">
+          <a id="mWhats" class="btn whats" target="_blank" href="#">📲 Chamar no WhatsApp</a>
+          <a id="mCred" class="btn outline" target="_blank"
+             href="https://app.conselho.net.br/api2/cartao_visita?cpf=00295932120&regional=5">
+            Ver credencial
+          </a>
+        </div>
+
+        <div class="note">
+          Observação: valores e disponibilidade podem mudar. Para confirmar documentação, condições e visita (presencial ou por vídeo),
+          fale direto com a Priscila.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================
+    // EDITE AQUI: PRODUTOS
+    // ==========================
+    const PRODUCTS = [
+      {
+  id: "P001",
+  tipo: "Apartamento",
+  titulo: "Apartamento • 3 Quartos (1 Suíte) • Vila Rosa • Goiânia",
+  cidade: "Goiânia/GO",
+  bairro: "Vila Rosa",
+  preco: "Ágio: R$ 225.255,29",
+  destaque: "Oportunidade",
+  resumo: "Apartamento no 14º andar, nascente, com 3 quartos (1 suíte), 2 vagas cobertas e lazer completo, próximo ao Parque Cascavel.",
+  descricaoCompleta: "Achado imperdível na Vila Rosa, em Goiânia. Apartamento com 65 m² muito bem distribuídos, localizado no 14º andar, posição nascente, garantindo mais iluminação natural e conforto térmico. O imóvel possui 3 quartos, sendo 1 suíte, armários planejados em todos os ambientes, banheiros modernos com box em blindex e luminárias sofisticadas. Condomínio com área de lazer completa e localização privilegiada, próximo ao Parque Cascavel, escolas, mercados e vias de fácil acesso.",
+  caracteristicas: [
+    "65 m² de área privativa",
+    "03 quartos (01 suíte)",
+    "Armários planejados em todos os ambientes",
+    "Banheiros com box em blindex",
+    "14º andar • posição nascente",
+    "02 vagas de garagem cobertas",
+    "Escaninho",
+    "Piscina adulto e infantil",
+    "Academia equipada",
+    "Playground e brinquedoteca",
+    "Redário, espaço gourmet e salão de festas",
+    "Condomínio: R$ 350",
+    "IPTU: R$ 500",
+    "Saldo devedor com a construtora: R$ 285.744,71",
+    "Aceita financiamento",
+    "Estuda propostas",
+    "Próximo ao Parque Cascavel"
+  ],
+  fotos: [
+    "img/p1-1.jpg",
+    "img/p1-2.jpg",
+    "img/p1-3.jpg",
+    "img/p1-4.jpg",
+    "img/p1-5.jpg",
+    "img/p1-6.jpg",
+    "img/p1-7.jpg",
+    "img/p1-8.jpg",
+    "img/p1-9.jpg",
+    "img/p1-10.jpg"
+  ]
+},
+      {
+        id: "P002",
+          tipo: "Casa",
+    titulo: "Casa Térrea • Setor Faiçalville • Orla Parque Macambira",
+    cidade: "Goiânia/GO",
+    bairro: "Setor Faiçalville",
+    preco: "R$ 650.000,00",
+    destaque: "Pronta para morar",
+    resumo: "Casa térrea na orla do Parque Macambira, com 3 suítes e excelente padrão construtivo.",
+    descricaoCompleta: "Casa térrea localizada no Setor Faiçalville, na orla do Parque Macambira. O imóvel possui sala integrada com cozinha, varanda gourmet separada, garagem paralela para dois carros e três suítes, sendo duas no modelo americano. Ideal para quem busca conforto, localização e valorização imobiliária.",
+    caracteristicas: [
+    "03 quartos (03 suítes – 02 americanas)",
+    "Sala integrada com cozinha",
+    "Varanda gourmet separada",
+    "03 banheiros",
+    "Garagem paralela para 02 veículos",
+    "Área construída: 140 m²",
+    "Área do terreno: 192 m²",
+    "Localização privilegiada na orla do Parque Macambira"
+        ],
+        fotos: ["img/p2-1.jpg","img/p2-2.jpg","img/p2-3.jpg","img/p2-4.jpg","img/p2-5.jpg"]
+      },
+      {
+  id: "P003",
+  tipo: "Casa",
+  titulo: "Casa • 3 Quartos • Setor Faiçalville • Próximo ao Parque Macambira",
+  cidade: "Goiânia/GO",
+  bairro: "Setor Faiçalville",
+  preco: "R$ 599.900,00",
+  destaque: "Pronta para morar",
+  resumo: "Casa térrea com pé-direito duplo, 3 suítes e churrasqueira a carvão, a poucos passos do Parque Macambira.",
+  descricaoCompleta: "Casa térrea localizada no Setor Faiçalville, em Goiânia, a poucos passos do Parque Macambira. O imóvel possui sala com pé-direito duplo integrada à cozinha, 3 quartos sendo 3 suítes (2 americanas), garagem paralela para 2 veículos e espaço com churrasqueira a carvão. Excelente opção para quem busca conforto, localização e qualidade de vida.",
+  caracteristicas: [
+    "03 quartos (03 suítes – 02 americanas)",
+    "Sala com pé-direito duplo integrada à cozinha",
+    "Churrasqueira a carvão",
+    "03 banheiros",
+    "Garagem paralela para 02 veículos",
+    "Área construída: 147 m²",
+    "Área do terreno: 199 m²",
+    "A poucos passos do Parque Macambira"
+  ],
+  fotos: [
+    "img/p3-1.jpg",
+    "img/p3-2.jpg",
+    "img/p3-3.jpg",
+    "img/p3-4.jpg",
+    "img/p3-5.jpg"
+  ]
+},
+{
+  id: "P004",
+  tipo: "Casa",
+  titulo: "Casa • 3 Suítes + Escritório • Setor Faiçalville • Próximo ao Parque Macambira (Anicuns)",
+  cidade: "Goiânia/GO",
+  bairro: "Setor Faiçalville",
+  preco: "R$ 1.300.000,00",
+  destaque: "Alto padrão",
+  resumo: "Casa de alto padrão com 3 suítes plenas, escritório, piscina aquecida e varanda gourmet, a poucos passos do Parque Macambira.",
+  descricaoCompleta: "Casa localizada no Setor Faiçalville, em Goiânia, a poucos passos do Parque Macambira (região do Anicuns). O imóvel possui 3 suítes plenas, escritório, sala ampla com pé-direito duplo, cozinha montada em armários, projeto de iluminação completo, varanda gourmet e piscina aquecida com cascata e iluminação em LED. Fachada em pedra ferro, casa isolada no lote, oferecendo conforto, privacidade e excelente padrão construtivo.",
+  caracteristicas: [
+    "03 suítes plenas",
+    "Escritório",
+    "Sala ampla com pé-direito duplo",
+    "Cozinha montada em armários",
+    "Projeto de iluminação",
+    "Varanda gourmet",
+    "Piscina aquecida com cascata e LED",
+    "04 banheiros",
+    "04 vagas de garagem",
+    "Área construída: 199 m²",
+    "Área do terreno: 360 m²",
+    "Fachada em pedra ferro",
+    "Casa sozinha no lote",
+    "Localização: próximo ao Parque Macambira (Anicuns)"
+  ],
+  fotos: [
+    "img/p4-1.jpg",
+    "img/p4-2.jpg",
+    "img/p4-3.jpg",
+    "img/p4-4.jpg",
+    "img/p4-5.jpg",
+    "img/p4-6.jpg",
+    "img/p4-7.jpg",
+    "img/p4-8.jpg",
+    "img/p4-9.jpg",
+    "img/p4-10.jpg"
+  ]
+},
+{
+  id: "P005",
+  tipo: "Casa",
+  titulo: "Casa • 3 Suítes • Setor Parque Anhanguera • Goiânia",
+  cidade: "Goiânia/GO",
+  bairro: "Setor Parque Anhanguera",
+  preco: "R$ 1.480.000,00",
+  destaque: "Alto padrão",
+  resumo: "Casa de alto padrão no Setor Parque Anhanguera, com 3 suítes, piscina aquecida, área gourmet e amplo terreno.",
+  descricaoCompleta: "Linda casa disponível no Setor Parque Anhanguera, em Goiânia. O imóvel conta com 3 suítes, sala de estar com pé-direito duplo, cozinha, área gourmet, lavabo, escaninho, deck com pergolado, área de serviço e piscina aquecida com hidromassagem. Possui paisagismo completo e acabamento de alto padrão em pisos, revestimentos, pedras e iluminação, oferecendo conforto, sofisticação e excelente padrão construtivo.",
+  caracteristicas: [
+    "03 suítes",
+    "Sala de estar com pé-direito duplo",
+    "Cozinha",
+    "Área gourmet",
+    "Lavabo",
+    "Escaninho",
+    "Deck com pergolado",
+    "Área de serviço",
+    "Piscina aquecida com hidromassagem",
+    "Paisagismo",
+    "05 banheiros",
+    "06 vagas de garagem",
+    "Área construída: 200 m²",
+    "Área do terreno: 445 m²",
+    "Acabamento de alto padrão"
+  ],
+  fotos: [
+    "img/p5-1.jpg",
+    "img/p5-2.jpg",
+    "img/p5-3.jpg",
+    "img/p5-4.jpg",
+    "img/p5-5.jpg",
+    "img/p5-6.jpg",
+    "img/p5-7.jpg",
+    "img/p5-8.jpg",
+    "img/p5-9.jpg",
+    "img/p5-10.jpg"
+  ]
+},
+
+    ];
+
+    // ==========================
+    // UTIL
+    // ==========================
+    const WA_NUMBER = "5562999787270";
+
+    const waLink = (text) =>
+      `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    const el = (tag, attrs={}, children=[]) => {
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v])=>{
+        if(k === "class") node.className = v;
+        else if(k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
+        else node.setAttribute(k, v);
+      });
+      (Array.isArray(children) ? children : [children]).forEach(c=>{
+        if(c === null || c === undefined) return;
+        if(typeof c === "string") node.appendChild(document.createTextNode(c));
+        else node.appendChild(c);
+      });
+      return node;
+    };
+
+    // ==========================
+    // RENDER GRID
+    // ==========================
+    const grid = document.getElementById("grid");
+    const q = document.getElementById("q");
+    const segButtons = Array.from(document.querySelectorAll(".seg button"));
+    let activeFilter = "all";
+
+    function card(product){
+      const msg = `Olá Priscila! Tenho interesse no imóvel ${product.id} — ${product.titulo}. Pode me enviar detalhes (preço, localização aproximada, condições e documentação)?`;
+      return el("div", {class:"card"}, [
+        el("div", {class:"thumb"}, [
+          el("img", {src: product.fotos[0], alt: product.titulo}),
+          el("div", {class:"tag"}, `${product.tipo} • ${product.id}`)
+        ]),
+        el("div", {class:"content"}, [
+          el("h3", {class:"title"}, product.titulo),
+          el("div", {class:"meta"}, [
+            el("span", {}, `📍 ${product.cidade}`),
+            el("span", {}, `• ${product.bairro}`),
+            el("span", {}, `• ${product.destaque}`)
+          ]),
+          el("div", {class:"price"}, product.preco),
+          el("div", {class:"desc"}, product.resumo),
+          el("div", {class:"actions"}, [
+            el("button", {class:"btn outline", onclick: () => openModal(product)}, "Ver detalhes"),
+            el("a", {class:"btn whats", href: waLink(msg), target:"_blank"}, "WhatsApp")
+          ])
+        ])
+      ]);
+    }
+
+    function matches(product, query){
+      if(!query) return true;
+      const hay = [
+        product.id, product.tipo, product.titulo, product.cidade, product.bairro,
+        product.preco, product.destaque, product.resumo, product.descricaoCompleta,
+        ...(product.caracteristicas || [])
+      ].join(" ").toLowerCase();
+      return hay.includes(query.toLowerCase());
+    }
+
+    function filtered(){
+      const query = (q.value || "").trim();
+      return PRODUCTS.filter(p => {
+        const fOk = (activeFilter === "all") || (p.tipo === activeFilter);
+        return fOk && matches(p, query);
+      });
+    }
+
+    function render(){
+      grid.innerHTML = "";
+      const items = filtered();
+      if(items.length === 0){
+        grid.appendChild(
+          el("div", {class:"card"}, [
+            el("div", {class:"content"}, [
+              el("h3", {class:"title"}, "Nenhum imóvel encontrado"),
+              el("div", {class:"desc"}, "Tente outro termo (cidade, bairro, código) ou clique no WhatsApp para receber opções atualizadas."),
+              el("a", {class:"btn whats", target:"_blank",
+                href: waLink("Olá Priscila! Não encontrei o que eu queria na vitrine. Pode me enviar opções de apartamentos prontos e casas prontas?")}, "📲 Pedir opções no WhatsApp")
+            ])
+          ])
+        );
+        return;
+      }
+      items.forEach(p => grid.appendChild(card(p)));
+    }
+
+    // ==========================
+    // MODAL
+    // ==========================
+    const backdrop = document.getElementById("backdrop");
+    const closeBtn = document.getElementById("closeBtn");
+    const mainImg = document.getElementById("mainImg");
+    const thumbs = document.getElementById("thumbs");
+    const mTitle = document.getElementById("mTitle");
+    const mSub = document.getElementById("mSub");
+    const chips = document.getElementById("chips");
+    const mPrice = document.getElementById("mPrice");
+    const mDesc = document.getElementById("mDesc");
+    const mList = document.getElementById("mList");
+    const mWhats = document.getElementById("mWhats");
+
+    function openModal(product){
+      mTitle.textContent = `${product.titulo}`;
+      mSub.textContent = `${product.id} • ${product.tipo} • ${product.cidade} • ${product.bairro}`;
+
+      chips.innerHTML = "";
+      const chipData = [product.tipo, product.destaque, product.cidade, product.bairro].filter(Boolean);
+      chipData.forEach(c => chips.appendChild(el("div", {class:"chip"}, c)));
+
+      mPrice.textContent = product.preco || "";
+      mDesc.textContent = product.descricaoCompleta || product.resumo || "";
+
+      mList.innerHTML = "";
+      (product.caracteristicas || []).forEach(it => mList.appendChild(el("li", {}, it)));
+
+      thumbs.innerHTML = "";
+      const photos = product.fotos || [];
+      const setMain = (src) => { mainImg.src = src; };
+
+      photos.forEach((src, idx) => {
+        const t = el("div", {class:"tbtn" + (idx === 0 ? " active" : ""), onclick: () => {
+          Array.from(thumbs.children).forEach(x => x.classList.remove("active"));
+          t.classList.add("active");
+          setMain(src);
+        }}, [el("img", {src, alt:`Foto ${idx+1} - ${product.titulo}`})]);
+        thumbs.appendChild(t);
+      });
+
+      setMain(photos[0] || "");
+
+      const msg = `Olá Priscila! Quero detalhes do imóvel ${product.id} — ${product.titulo}. Pode me enviar: preço final, localização (aprox.), condições de pagamento/financiamento, documentação e disponibilidade?`;
+      mWhats.href = waLink(msg);
+
+      backdrop.style.display = "flex";
+      backdrop.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      backdrop.style.display = "none";
+      backdrop.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "auto";
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", (e)=>{ if(e.target === backdrop) closeModal(); });
+    document.addEventListener("keydown", (e)=>{ if(e.key === "Escape" && backdrop.style.display === "flex") closeModal(); });
+
+    segButtons.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        segButtons.forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    q.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
