@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Priscila Alves Maia | Imóveis Prontos no Brasil</title>
+  <title>Priscila Alves Maia | Imóveis Prontos Para Morar</title>
   <meta name="description" content="Vitrine de apartamentos prontos e casas prontas. Atendimento direto no WhatsApp.">
 
   <style>
@@ -143,20 +143,57 @@
     .actions{display:flex;gap:10px;flex-wrap:wrap}
     .actions .btn{padding:12px 14px;border-radius:12px;font-size:13px}
 
-    /* modal */
+    /* =======================================================
+       MODAL (DESKTOP OK + FIX DEFINITIVO iPhone/Safari)
+       ======================================================= */
     .modalBackdrop{
-      position:fixed;inset:0;background:rgba(2,6,23,.55);
-      display:none;align-items:center;justify-content:center;
-      padding:20px;z-index:9999;
+      position:fixed;
+      inset:0;
+      background:rgba(2,6,23,.55);
+      display:none;
+      z-index:9999;
+
+      /* base desktop */
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+
+      /* FIX iPhone: rolagem dentro do backdrop */
+      overflow-y:auto;
+      -webkit-overflow-scrolling: touch;
     }
+
     .modal{
       width:min(1040px, 100%);
-      background:#fff;border-radius:22px;
-      overflow:hidden;border:1px solid rgba(255,255,255,.2);
+      background:#fff;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.2);
       box-shadow: 0 40px 120px rgba(2,6,23,.35);
-      display:grid;grid-template-columns:1.1fr .9fr;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      overflow:hidden;
+
+      /* garante que não estoure a tela em desktop também */
+      max-height: calc(100vh - 40px);
     }
-    @media (max-width: 980px){ .modal{grid-template-columns:1fr} }
+
+    @media (max-width: 980px){
+      /* no mobile, NÃO centraliza verticalmente (senão “trava” e não rola) */
+      .modalBackdrop{
+        align-items:flex-start;
+        padding:12px;
+      }
+
+      .modal{
+        grid-template-columns:1fr;
+        max-height:none; /* deixa o conteúdo crescer e o backdrop rolar */
+      }
+
+      .galleryMain{
+        height: min(52vh, 420px);
+      }
+    }
+
     .mLeft{background:#0b1220;position:relative}
     .mRight{padding:18px 18px 16px}
     .close{
@@ -216,23 +253,6 @@
       display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
     }
     footer strong{color:#0f172a}
-
-    /* =======================================================
-       ✅ FIX MOBILE MODAL (iPhone/Safari) — SOMENTE CORREÇÃO
-       ======================================================= */
-    .modalBackdrop{
-      overflow:auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .modal{
-      max-height: calc(100vh - 40px);
-      overflow:hidden;
-    }
-    @media (max-width: 980px){
-      .galleryMain{
-        height: min(52vh, 420px);
-      }
-    }
   </style>
 </head>
 
@@ -249,7 +269,7 @@
       <div class="brand">
         <img src="img/logo.png" onerror="this.src='img/hero.jpg'" alt="Priscila Alves Maia">
         <div>
-          <h1>Priscila Alves Maia • CRECI-GO 38804 • CNAI 46495</h1>
+          <h1>Priscila Alves Maia • CRECI-GO 38.804 • CNAI 46.495</h1>
           <p>Imóveis prontos no Brasil • Atendimento direto no WhatsApp</p>
         </div>
       </div>
@@ -349,7 +369,7 @@
     <footer>
       <div>
         <strong>Priscila Alves Maia</strong><br>
-        Corretora de Imóveis • CRECI-GO 38804 • Perita Avaliadora • CNAI 46495
+        Corretora de Imóveis • CRECI-GO 38.804 • Perita Avaliadora • CNAI 46.495
       </div>
       <div>
         Contato: <strong>+55 62 99878-7270</strong> (WhatsApp)<br>
