@@ -216,6 +216,23 @@
       display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
     }
     footer strong{color:#0f172a}
+
+    /* =======================================================
+       ✅ FIX MOBILE MODAL (iPhone/Safari) — SOMENTE CORREÇÃO
+       ======================================================= */
+    .modalBackdrop{
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .modal{
+      max-height: calc(100vh - 40px);
+      overflow:hidden;
+    }
+    @media (max-width: 980px){
+      .galleryMain{
+        height: min(52vh, 420px);
+      }
+    }
   </style>
 </head>
 
@@ -297,38 +314,36 @@
 
     <!-- GRID -->
     <div id="grid" class="grid"></div>
-    </div>
 
-<!-- AVALIAÇÃO DE IMÓVEIS -->
-<section style="margin-top:60px;padding:30px;border:1px solid #e5e7eb;border-radius:18px;">
-  <h2 style="font-size:28px;margin-bottom:12px;">
-    Avaliação de Imóveis • Urbana e Rural (PTAM)
-  </h2>
+    <!-- AVALIAÇÃO DE IMÓVEIS -->
+    <section style="margin-top:60px;padding:30px;border:1px solid #e5e7eb;border-radius:18px;">
+      <h2 style="font-size:28px;margin-bottom:12px;">
+        Avaliação de Imóveis • Urbana e Rural (PTAM)
+      </h2>
 
-  <p style="color:#475569;line-height:1.7;">
-    Avaliação técnica baseada em conhecimento de mercado, normas ABNT,
-    COFECI e CRECI-GO, com foco em resultados confiáveis.
-  </p>
+      <p style="color:#475569;line-height:1.7;">
+        Avaliação técnica baseada em conhecimento de mercado, normas ABNT,
+        COFECI e CRECI-GO, com foco em resultados confiáveis.
+      </p>
 
-  <p style="color:#475569;line-height:1.7;">
-    Elaboração de <strong>PTAM – Parecer Técnico de Avaliação Mercadológica</strong>,
-    amplamente aceito em bancos, justiça, inventários, financiamentos
-    e processos administrativos.
-  </p>
+      <p style="color:#475569;line-height:1.7;">
+        Elaboração de <strong>PTAM – Parecer Técnico de Avaliação Mercadológica</strong>,
+        amplamente aceito em bancos, justiça, inventários, financiamentos
+        e processos administrativos.
+      </p>
 
-  <ul style="color:#334155;line-height:1.8;">
-    <li>Casas, apartamentos, lotes e terrenos</li>
-    <li>Imóveis comerciais, industriais e rurais</li>
-    <li>Inventários, partilhas e separações</li>
-    <li>Contestação de IPTU, ITBI, ITCD e outros</li>
-  </ul>
+      <ul style="color:#334155;line-height:1.8;">
+        <li>Casas, apartamentos, lotes e terrenos</li>
+        <li>Imóveis comerciais, industriais e rurais</li>
+        <li>Inventários, partilhas e separações</li>
+        <li>Contestação de IPTU, ITBI, ITCD e outros</li>
+      </ul>
 
-  <a class="btn whats" target="_blank"
-     href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20solicitar%20uma%20avaliação%20de%20imóvel%20(PTAM).">
-    📲 Solicitar Avaliação Técnica
-  </a>
-</section>
-
+      <a class="btn whats" target="_blank"
+         href="https://wa.me/5562999787270?text=Olá%20Priscila!%20Quero%20solicitar%20uma%20avaliação%20de%20imóvel%20(PTAM).">
+        📲 Solicitar Avaliação Técnica
+      </a>
+    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -390,183 +405,154 @@
     // ==========================
     const PRODUCTS = [
       {
-  id: "P001",
-  tipo: "Apartamento",
-  titulo: "Apartamento • 3 Quartos (1 Suíte) • Vila Rosa • Goiânia",
-  cidade: "Goiânia/GO",
-  bairro: "Vila Rosa",
-  preco: "Ágio: R$ 225.255,29",
-  destaque: "Oportunidade",
-  resumo: "Apartamento no 14º andar, nascente, com 3 quartos (1 suíte), 2 vagas cobertas e lazer completo, próximo ao Parque Cascavel.",
-  descricaoCompleta: "Achado imperdível na Vila Rosa, em Goiânia. Apartamento com 65 m² muito bem distribuídos, localizado no 14º andar, posição nascente, garantindo mais iluminação natural e conforto térmico. O imóvel possui 3 quartos, sendo 1 suíte, armários planejados em todos os ambientes, banheiros modernos com box em blindex e luminárias sofisticadas. Condomínio com área de lazer completa e localização privilegiada, próximo ao Parque Cascavel, escolas, mercados e vias de fácil acesso.",
-  caracteristicas: [
-    "65 m² de área privativa",
-    "03 quartos (01 suíte)",
-    "Armários planejados em todos os ambientes",
-    "Banheiros com box em blindex",
-    "14º andar • posição nascente",
-    "02 vagas de garagem cobertas",
-    "Escaninho",
-    "Piscina adulto e infantil",
-    "Academia equipada",
-    "Playground e brinquedoteca",
-    "Redário, espaço gourmet e salão de festas",
-    "Condomínio: R$ 350",
-    "IPTU: R$ 500",
-    "Saldo devedor com a construtora: R$ 285.744,71",
-    "Aceita financiamento",
-    "Estuda propostas",
-    "Próximo ao Parque Cascavel"
-  ],
-  fotos: [
-    "img/p1-1.jpg",
-    "img/p1-2.jpg",
-    "img/p1-3.jpg",
-    "img/p1-4.jpg",
-    "img/p1-5.jpg",
-    "img/p1-6.jpg",
-    "img/p1-7.jpg",
-    "img/p1-8.jpg",
-    "img/p1-9.jpg",
-    "img/p1-10.jpg"
-  ]
-},
+        id: "P001",
+        tipo: "Apartamento",
+        titulo: "Apartamento • 3 Quartos (1 Suíte) • Vila Rosa • Goiânia",
+        cidade: "Goiânia/GO",
+        bairro: "Vila Rosa",
+        preco: "Ágio: R$ 225.255,29",
+        destaque: "Oportunidade",
+        resumo: "Apartamento no 14º andar, nascente, com 3 quartos (1 suíte), 2 vagas cobertas e lazer completo, próximo ao Parque Cascavel.",
+        descricaoCompleta: "Achado imperdível na Vila Rosa, em Goiânia. Apartamento com 65 m² muito bem distribuídos, localizado no 14º andar, posição nascente, garantindo mais iluminação natural e conforto térmico. O imóvel possui 3 quartos, sendo 1 suíte, armários planejados em todos os ambientes, banheiros modernos com box em blindex e luminárias sofisticadas. Condomínio com área de lazer completa e localização privilegiada, próximo ao Parque Cascavel, escolas, mercados e vias de fácil acesso.",
+        caracteristicas: [
+          "65 m² de área privativa",
+          "03 quartos (01 suíte)",
+          "Armários planejados em todos os ambientes",
+          "Banheiros com box em blindex",
+          "14º andar • posição nascente",
+          "02 vagas de garagem cobertas",
+          "Escaninho",
+          "Piscina adulto e infantil",
+          "Academia equipada",
+          "Playground e brinquedoteca",
+          "Redário, espaço gourmet e salão de festas",
+          "Condomínio: R$ 350",
+          "IPTU: R$ 500",
+          "Saldo devedor com a construtora: R$ 285.744,71",
+          "Aceita financiamento",
+          "Estuda propostas",
+          "Próximo ao Parque Cascavel"
+        ],
+        fotos: [
+          "img/p1-1.jpg",
+          "img/p1-2.jpg",
+          "img/p1-3.jpg",
+          "img/p1-4.jpg",
+          "img/p1-5.jpg",
+          "img/p1-6.jpg",
+          "img/p1-7.jpg",
+          "img/p1-8.jpg",
+          "img/p1-9.jpg",
+          "img/p1-10.jpg"
+        ]
+      },
       {
         id: "P002",
-          tipo: "Casa",
-    titulo: "Casa Térrea • Setor Faiçalville • Orla Parque Macambira",
-    cidade: "Goiânia/GO",
-    bairro: "Setor Faiçalville",
-    preco: "R$ 650.000,00",
-    destaque: "Pronta para morar",
-    resumo: "Casa térrea na orla do Parque Macambira, com 3 suítes e excelente padrão construtivo.",
-    descricaoCompleta: "Casa térrea localizada no Setor Faiçalville, na orla do Parque Macambira. O imóvel possui sala integrada com cozinha, varanda gourmet separada, garagem paralela para dois carros e três suítes, sendo duas no modelo americano. Ideal para quem busca conforto, localização e valorização imobiliária.",
-    caracteristicas: [
-    "03 quartos (03 suítes – 02 americanas)",
-    "Sala integrada com cozinha",
-    "Varanda gourmet separada",
-    "03 banheiros",
-    "Garagem paralela para 02 veículos",
-    "Área construída: 140 m²",
-    "Área do terreno: 192 m²",
-    "Localização privilegiada na orla do Parque Macambira"
+        tipo: "Casa",
+        titulo: "Casa Térrea • Setor Faiçalville • Orla Parque Macambira",
+        cidade: "Goiânia/GO",
+        bairro: "Setor Faiçalville",
+        preco: "R$ 650.000,00",
+        destaque: "Pronta para morar",
+        resumo: "Casa térrea na orla do Parque Macambira, com 3 suítes e excelente padrão construtivo.",
+        descricaoCompleta: "Casa térrea localizada no Setor Faiçalville, na orla do Parque Macambira. O imóvel possui sala integrada com cozinha, varanda gourmet separada, garagem paralela para dois carros e três suítes, sendo duas no modelo americano. Ideal para quem busca conforto, localização e valorização imobiliária.",
+        caracteristicas: [
+          "03 quartos (03 suítes – 02 americanas)",
+          "Sala integrada com cozinha",
+          "Varanda gourmet separada",
+          "03 banheiros",
+          "Garagem paralela para 02 veículos",
+          "Área construída: 140 m²",
+          "Área do terreno: 192 m²",
+          "Localização privilegiada na orla do Parque Macambira"
         ],
         fotos: ["img/p2-1.jpg","img/p2-2.jpg","img/p2-3.jpg","img/p2-4.jpg","img/p2-5.jpg"]
       },
       {
-  id: "P003",
-  tipo: "Casa",
-  titulo: "Casa • 3 Quartos • Setor Faiçalville • Próximo ao Parque Macambira",
-  cidade: "Goiânia/GO",
-  bairro: "Setor Faiçalville",
-  preco: "R$ 599.900,00",
-  destaque: "Pronta para morar",
-  resumo: "Casa térrea com pé-direito duplo, 3 suítes e churrasqueira a carvão, a poucos passos do Parque Macambira.",
-  descricaoCompleta: "Casa térrea localizada no Setor Faiçalville, em Goiânia, a poucos passos do Parque Macambira. O imóvel possui sala com pé-direito duplo integrada à cozinha, 3 quartos sendo 3 suítes (2 americanas), garagem paralela para 2 veículos e espaço com churrasqueira a carvão. Excelente opção para quem busca conforto, localização e qualidade de vida.",
-  caracteristicas: [
-    "03 quartos (03 suítes – 02 americanas)",
-    "Sala com pé-direito duplo integrada à cozinha",
-    "Churrasqueira a carvão",
-    "03 banheiros",
-    "Garagem paralela para 02 veículos",
-    "Área construída: 147 m²",
-    "Área do terreno: 199 m²",
-    "A poucos passos do Parque Macambira"
-  ],
-  fotos: [
-    "img/p3-1.jpg",
-    "img/p3-2.jpg",
-    "img/p3-3.jpg",
-    "img/p3-4.jpg",
-    "img/p3-5.jpg"
-  ]
-},
-{
-  id: "P004",
-  tipo: "Casa",
-  titulo: "Casa • 3 Suítes + Escritório • Setor Faiçalville • Próximo ao Parque Macambira (Anicuns)",
-  cidade: "Goiânia/GO",
-  bairro: "Setor Faiçalville",
-  preco: "R$ 1.300.000,00",
-  destaque: "Alto padrão",
-  resumo: "Casa de alto padrão com 3 suítes plenas, escritório, piscina aquecida e varanda gourmet, a poucos passos do Parque Macambira.",
-  descricaoCompleta: "Casa localizada no Setor Faiçalville, em Goiânia, a poucos passos do Parque Macambira (região do Anicuns). O imóvel possui 3 suítes plenas, escritório, sala ampla com pé-direito duplo, cozinha montada em armários, projeto de iluminação completo, varanda gourmet e piscina aquecida com cascata e iluminação em LED. Fachada em pedra ferro, casa isolada no lote, oferecendo conforto, privacidade e excelente padrão construtivo.",
-  caracteristicas: [
-    "03 suítes plenas",
-    "Escritório",
-    "Sala ampla com pé-direito duplo",
-    "Cozinha montada em armários",
-    "Projeto de iluminação",
-    "Varanda gourmet",
-    "Piscina aquecida com cascata e LED",
-    "04 banheiros",
-    "04 vagas de garagem",
-    "Área construída: 199 m²",
-    "Área do terreno: 360 m²",
-    "Fachada em pedra ferro",
-    "Casa sozinha no lote",
-    "Localização: próximo ao Parque Macambira (Anicuns)"
-  ],
-  fotos: [
-    "img/p4-1.jpg",
-    "img/p4-2.jpg",
-    "img/p4-3.jpg",
-    "img/p4-4.jpg",
-    "img/p4-5.jpg",
-    "img/p4-6.jpg",
-    "img/p4-7.jpg",
-    "img/p4-8.jpg",
-    "img/p4-9.jpg",
-    "img/p4-10.jpg"
-  ]
-},
-{
-  id: "P005",
-  tipo: "Casa",
-  titulo: "Casa • 3 Suítes • Setor Parque Anhanguera • Goiânia",
-  cidade: "Goiânia/GO",
-  bairro: "Setor Parque Anhanguera",
-  preco: "R$ 1.480.000,00",
-  destaque: "Alto padrão",
-  resumo: "Casa de alto padrão no Setor Parque Anhanguera, com 3 suítes, piscina aquecida, área gourmet e amplo terreno.",
-  descricaoCompleta: "Linda casa disponível no Setor Parque Anhanguera, em Goiânia. O imóvel conta com 3 suítes, sala de estar com pé-direito duplo, cozinha, área gourmet, lavabo, escaninho, deck com pergolado, área de serviço e piscina aquecida com hidromassagem. Possui paisagismo completo e acabamento de alto padrão em pisos, revestimentos, pedras e iluminação, oferecendo conforto, sofisticação e excelente padrão construtivo.",
-  caracteristicas: [
-    "03 suítes",
-    "Sala de estar com pé-direito duplo",
-    "Cozinha",
-    "Área gourmet",
-    "Lavabo",
-    "Escaninho",
-    "Deck com pergolado",
-    "Área de serviço",
-    "Piscina aquecida com hidromassagem",
-    "Paisagismo",
-    "05 banheiros",
-    "06 vagas de garagem",
-    "Área construída: 200 m²",
-    "Área do terreno: 445 m²",
-    "Acabamento de alto padrão"
-  ],
-  fotos: [
-    "img/p5-1.jpg",
-    "img/p5-2.jpg",
-    "img/p5-3.jpg",
-    "img/p5-4.jpg",
-    "img/p5-5.jpg",
-    "img/p5-6.jpg",
-    "img/p5-7.jpg",
-    "img/p5-8.jpg",
-    "img/p5-9.jpg",
-    "img/p5-10.jpg"
-  ]
-},
-
+        id: "P003",
+        tipo: "Casa",
+        titulo: "Casa • 3 Quartos • Setor Faiçalville • Próximo ao Parque Macambira",
+        cidade: "Goiânia/GO",
+        bairro: "Setor Faiçalville",
+        preco: "R$ 599.900,00",
+        destaque: "Pronta para morar",
+        resumo: "Casa térrea com pé-direito duplo, 3 suítes e churrasqueira a carvão, a poucos passos do Parque Macambira.",
+        descricaoCompleta: "Casa térrea localizada no Setor Faiçalville, em Goiânia, a poucos passos do Parque Macambira. O imóvel possui sala com pé-direito duplo integrada à cozinha, 3 quartos sendo 3 suítes (2 americanas), garagem paralela para 2 veículos e espaço com churrasqueira a carvão. Excelente opção para quem busca conforto, localização e qualidade de vida.",
+        caracteristicas: [
+          "03 quartos (03 suítes – 02 americanas)",
+          "Sala com pé-direito duplo integrada à cozinha",
+          "Churrasqueira a carvão",
+          "03 banheiros",
+          "Garagem paralela para 02 veículos",
+          "Área construída: 147 m²",
+          "Área do terreno: 199 m²",
+          "A poucos passos do Parque Macambira"
+        ],
+        fotos: ["img/p3-1.jpg","img/p3-2.jpg","img/p3-3.jpg","img/p3-4.jpg","img/p3-5.jpg"]
+      },
+      {
+        id: "P004",
+        tipo: "Casa",
+        titulo: "Casa • 3 Suítes + Escritório • Setor Faiçalville • Próximo ao Parque Macambira (Anicuns)",
+        cidade: "Goiânia/GO",
+        bairro: "Setor Faiçalville",
+        preco: "R$ 1.300.000,00",
+        destaque: "Alto padrão",
+        resumo: "Casa de alto padrão com 3 suítes plenas, escritório, piscina aquecida e varanda gourmet, a poucos passos do Parque Macambira.",
+        descricaoCompleta: "Casa localizada no Setor Faiçalville, em Goiânia, a poucos passos do Parque Macambira (região do Anicuns). O imóvel possui 3 suítes plenas, escritório, sala ampla com pé-direito duplo, cozinha montada em armários, projeto de iluminação completo, varanda gourmet e piscina aquecida com cascata e iluminação em LED. Fachada em pedra ferro, casa isolada no lote, oferecendo conforto, privacidade e excelente padrão construtivo.",
+        caracteristicas: [
+          "03 suítes plenas",
+          "Escritório",
+          "Sala ampla com pé-direito duplo",
+          "Cozinha montada em armários",
+          "Projeto de iluminação",
+          "Varanda gourmet",
+          "Piscina aquecida com cascata e LED",
+          "04 banheiros",
+          "04 vagas de garagem",
+          "Área construída: 199 m²",
+          "Área do terreno: 360 m²",
+          "Fachada em pedra ferro",
+          "Casa sozinha no lote",
+          "Localização: próximo ao Parque Macambira (Anicuns)"
+        ],
+        fotos: ["img/p4-1.jpg","img/p4-2.jpg","img/p4-3.jpg","img/p4-4.jpg","img/p4-5.jpg","img/p4-6.jpg","img/p4-7.jpg","img/p4-8.jpg","img/p4-9.jpg","img/p4-10.jpg"]
+      },
+      {
+        id: "P005",
+        tipo: "Casa",
+        titulo: "Casa • 3 Suítes • Setor Parque Anhanguera • Goiânia",
+        cidade: "Goiânia/GO",
+        bairro: "Setor Parque Anhanguera",
+        preco: "R$ 1.480.000,00",
+        destaque: "Alto padrão",
+        resumo: "Casa de alto padrão no Setor Parque Anhanguera, com 3 suítes, piscina aquecida, área gourmet e amplo terreno.",
+        descricaoCompleta: "Linda casa disponível no Setor Parque Anhanguera, em Goiânia. O imóvel conta com 3 suítes, sala de estar com pé-direito duplo, cozinha, área gourmet, lavabo, escaninho, deck com pergolado, área de serviço e piscina aquecida com hidromassagem. Possui paisagismo completo e acabamento de alto padrão em pisos, revestimentos, pedras e iluminação, oferecendo conforto, sofisticação e excelente padrão construtivo.",
+        caracteristicas: [
+          "03 suítes",
+          "Sala de estar com pé-direito duplo",
+          "Cozinha",
+          "Área gourmet",
+          "Lavabo",
+          "Escaninho",
+          "Deck com pergolado",
+          "Área de serviço",
+          "Piscina aquecida com hidromassagem",
+          "Paisagismo",
+          "05 banheiros",
+          "06 vagas de garagem",
+          "Área construída: 200 m²",
+          "Área do terreno: 445 m²",
+          "Acabamento de alto padrão"
+        ],
+        fotos: ["img/p5-1.jpg","img/p5-2.jpg","img/p5-3.jpg","img/p5-4.jpg","img/p5-5.jpg","img/p5-6.jpg","img/p5-7.jpg","img/p5-8.jpg","img/p5-9.jpg","img/p5-10.jpg"]
+      }
     ];
 
     // ==========================
     // UTIL
     // ==========================
-    const WA_NUMBER = "5562999787270";
+    const WA_NUMBER = "5562998787270";
 
     const waLink = (text) =>
       `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
