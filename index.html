@@ -253,6 +253,98 @@
       display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
     }
     footer strong{color:#0f172a}
+
+    /* ===== Lead Form (Questionário) ===== */
+.lead-form{
+  max-width:1180px;
+  margin: 28px auto 0;
+  padding: 0 18px;
+}
+.lead-form__head{
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding:18px;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(2,6,23,.06);
+}
+.lead-form__head h2{margin:0 0 6px;font-size:20px;letter-spacing:-.02em}
+.lead-form__head p{margin:0;color:var(--muted);line-height:1.6}
+
+.lead-form__grid{
+  display:grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap:16px;
+  margin-top:14px;
+}
+@media (max-width: 980px){
+  .lead-form__grid{grid-template-columns:1fr}
+}
+
+.lead-form__card{
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding:18px;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(2,6,23,.06);
+}
+.lead-form__card h3{margin:0 0 12px;font-size:16px}
+
+.lead-form label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  color:#0f172a;
+  margin: 10px 0 8px;
+}
+.lead-form input, .lead-form textarea{
+  width:100%;
+  padding:12px 12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:14px;
+  outline:none;
+  margin-top:6px;
+}
+.lead-form textarea{resize:vertical}
+
+.lead-form fieldset{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+  margin:12px 0;
+}
+.lead-form legend{
+  font-size:13px;
+  font-weight:900;
+  padding: 0 8px;
+  color:#0f172a;
+}
+.lead-form__options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 14px;
+  margin-top:10px;
+}
+.lead-form__options label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0;
+  font-weight:700;
+  color:#334155;
+}
+.lead-form__actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+.lead-form__note{
+  margin-top:10px;
+  font-size:12px;
+  color:#64748b;
+  line-height:1.5;
+}
   </style>
 </head>
 
@@ -280,8 +372,7 @@
         <a class="pill" target="_blank" href="https://raw.githubusercontent.com/laudospriscila-dev/priscilaalves.store/refs/heads/main/img/CRECI-CNAI.jpeg"><strong>Ver credencial</strong></a>
         <a class="pill" target="_blank"
            href="https://wa.me/5562998787270?text=Olá%20Priscila!%20Quero%20atendimento%20para%20imóveis%20prontos%20(apto/casa).">
-          <strong>WhatsApp</strong> +55 62 99878-7270 
-          
+          <strong>WhatsApp</strong> +55 62 99878-7270
         </a>
       </div>
     </div>
@@ -319,6 +410,140 @@
         <img src="img/hero.jpg" alt="Imóveis prontos no Brasil">
       </div>
     </section>
+    <section class="lead-form" id="questionario">
+  <div class="lead-form__head">
+    <h2>Cliente Investidor</h2>
+    <p>Questionário rápido para eu te atender com mais assertividade.</p>
+  </div>
+
+  <form id="leadForm" class="lead-form__grid">
+    <!-- Dados pessoais -->
+    <div class="lead-form__card">
+      <h3>Seus dados</h3>
+
+      <label>
+        Nome completo *
+        <input type="text" name="nome" required placeholder="Ex.: João Silva" />
+      </label>
+
+      <label>
+        WhatsApp do cliente *
+        <input type="tel" name="whats" required placeholder="Ex.: +55 11 99999-9999" />
+      </label>
+
+      <label>
+        E-mail
+        <input type="email" name="email" placeholder="Ex.: joao@email.com" />
+      </label>
+
+      <label>
+        Você mora onde?
+        <input type="text" name="localidade" placeholder="Ex.: Londres/UK, Goiânia/GO, etc." />
+      </label>
+
+      <label>
+        Observações rápidas
+        <textarea name="obs" rows="3" placeholder="Ex.: preciso de urgência / pode ser em 2 bairros..."></textarea>
+      </label>
+    </div>
+
+    <!-- Questionário -->
+    <div class="lead-form__card">
+      <h3>Perfil do imóvel desejado</h3>
+
+      <fieldset>
+        <legend>1) Tipo de imóvel *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="tipo_imovel" value="Casa" required /> Casa</label>
+          <label><input type="radio" name="tipo_imovel" value="Apartamento" /> Apartamento</label>
+          <label><input type="radio" name="tipo_imovel" value="Lote/Terreno" /> Lote / Terreno</label>
+          <label><input type="radio" name="tipo_imovel" value="Comercial" /> Comercial</label>
+          <label><input type="radio" name="tipo_imovel" value="Investimento" /> Investimento</label>
+        </div>
+      </fieldset>
+
+      <label>
+        2) Cidade e bairro(s) desejados *
+        <input type="text" name="cidade_bairro" required placeholder="Ex.: Goiânia - Setor Bueno / Aparecida - Jardins..." />
+      </label>
+
+      <fieldset>
+        <legend>3) Finalidade da compra *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="finalidade" value="Moradia" required /> Moradia</label>
+          <label><input type="radio" name="finalidade" value="Investimento" /> Investimento</label>
+          <label><input type="radio" name="finalidade" value="Renda (aluguel)" /> Renda (aluguel)</label>
+        </div>
+      </fieldset>
+
+      <label>
+        4) Faixa de valor aproximada (R$) *
+        <input type="text" name="faixa_valor" required placeholder="Ex.: 500.000 a 700.000" />
+      </label>
+
+      <fieldset>
+        <legend>5) Forma de pagamento *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="pagamento" value="À vista" required /> À vista</label>
+          <label><input type="radio" name="pagamento" value="Financiamento" /> Financiamento</label>
+          <label><input type="radio" name="pagamento" value="Parte à vista + financiamento" /> Parte à vista + financiamento</label>
+          <label><input type="radio" name="pagamento" value="Consórcio" /> Consórcio</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>6) Quartos (mínimo) *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="quartos" value="1" required /> 1</label>
+          <label><input type="radio" name="quartos" value="2" /> 2</label>
+          <label><input type="radio" name="quartos" value="3+" /> 3 ou mais</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>7) Vagas de garagem *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="vagas" value="1" required /> 1</label>
+          <label><input type="radio" name="vagas" value="2" /> 2</label>
+          <label><input type="radio" name="vagas" value="Não faço questão" /> Não faço questão</label>
+        </div>
+      </fieldset>
+
+      <label>
+        8) Indispensáveis (ex.: lazer, elevador, segurança, varanda, suíte)
+        <input type="text" name="indispensavel" placeholder="Ex.: varanda + suíte + condomínio com lazer" />
+      </label>
+
+      <fieldset>
+        <legend>9) Quando pretende comprar? *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="prazo" value="Imediato" required /> Imediato</label>
+          <label><input type="radio" name="prazo" value="Até 3 meses" /> Até 3 meses</label>
+          <label><input type="radio" name="prazo" value="Até 6 meses" /> Até 6 meses</label>
+          <label><input type="radio" name="prazo" value="Apenas pesquisando" /> Apenas pesquisando</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>10) Possui imóvel para venda ou permuta? *</legend>
+        <div class="lead-form__options">
+          <label><input type="radio" name="permuta" value="Sim" required /> Sim</label>
+          <label><input type="radio" name="permuta" value="Não" /> Não</label>
+        </div>
+      </fieldset>
+
+      <div class="lead-form__actions">
+        <button type="submit" class="btn whats">📲 Enviar para WhatsApp da Priscila</button>
+        <a class="btn outline" href="#grid">Ver imóveis disponíveis</a>
+      </div>
+
+      <p class="lead-form__note">
+        Ao enviar, você concorda em compartilhar suas informações com a corretora para atendimento.
+      </p>
+    </div>
+  </form>
+</section>
+
 
     <!-- FILTERS -->
     <div class="filters">
@@ -326,8 +551,6 @@
         <button class="active" data-filter="all">Todos</button>
         <button data-filter="Apartamento">Apartamentos</button>
         <button data-filter="Casa">Casas</button>
-         <button data-filter="Lote">Lotes</button>
-        <button data-filter="Sobrado">Sobrados</button>
       </div>
 
       <div class="search">
@@ -337,8 +560,7 @@
 
     <!-- GRID -->
     <div id="grid" class="grid"></div>
-    
-<!-- QUICK LINKS -->
+    <!-- QUICK LINKS -->
     <section style="margin-top:28px;border:1px solid rgba(15,23,42,.12);border-radius:18px;padding:18px;background:#fff">
   <h3 style="margin:0 0 10px;font-size:18px">Guia rápido: compra segura e avaliação</h3>
   <p style="margin:0 0 12px;color:#475569;line-height:1.6">
@@ -390,7 +612,6 @@
       </div>
       <div>
         Contato: <strong>+55 62 99878-7270</strong> (WhatsApp)<br>
-        <strong> contato@priscilaalves.store</strong> (E-mail)<br>
         Sua compra no Brasil, com respaldo técnico
       </div>
     </footer>
@@ -442,158 +663,6 @@
     // EDITE AQUI: PRODUTOS
     // ==========================
     const PRODUCTS = [
-      {
-  id: "P015",
-  tipo: "Casa",
-  titulo: "Casa Térrea • Jardins Bolonha • 3 Suítes • Piscina",
-  cidade: "Senador Canedo/GO",
-  bairro: "Jardins Bolonha",
-  preco: "R$ 1.150.000,00",
-  destaque: "Casa nova",
-  resumo: "Casa térrea nova no Jardins Bolonha, com 3 suítes plenas, área gourmet integrada, piscina com hidromassagem e armários planejados.",
-  descricaoCompleta: `
-    Casa térrea localizada no condomínio Jardins Bolonha,
-    em Senador Canedo/GO.
-
-    Imóvel novo, nunca habitado, com excelente padrão construtivo.
-    Possui 3 suítes plenas, totalizando 4 banheiros, sala integrada
-    à área gourmet, churrasqueira e piscina com hidromassagem,
-    preparada para aquecimento solar.
-
-    Conta com armários planejados na cozinha, closet e suíte master,
-    além de estrutura pronta para instalação de placas de energia solar.
-    Projeto funcional, moderno e ideal para quem busca conforto,
-    segurança e qualidade de vida em condomínio fechado.
-  `,
-  caracteristicas: [
-    "Condomínio Jardins Bolonha",
-    "Casa térrea nova (nunca habitada)",
-    "03 suítes plenas",
-    "04 banheiros",
-    "Sala integrada à área gourmet",
-    "Churrasqueira",
-    "Piscina com hidromassagem",
-    "Preparação para aquecimento solar",
-    "Estrutura pronta para energia solar",
-    "Armários planejados na cozinha",
-    "Armários no closet e suíte master",
-    "02 vagas de garagem cobertas",
-    "Área construída: 160 m²",
-    "Área do terreno: 300 m²",
-    "Avalia permuta (apartamento até R$ 500.000,00)"
-  ],
-  fotos: [
-    "img/p15-1.jpg",
-    "img/p15-2.jpg",
-    "img/p15-3.jpg",
-    "img/p15-4.jpg",
-    "img/p15-5.jpg",
-    "img/p15-6.jpg",
-    "img/p15-7.jpg",
-    "img/p15-8.jpg"
-  ]
-},
-      {
-  id: "P014",
-  tipo: "Lote",
-  titulo: "Lote • Jardins Lyon (FGR) • Jardim Atlântico • Ágio (Investimento)",
-  cidade: "Goiânia/GO",
-  bairro: "Jardim Atlântico • Jardins Lyon (FGR)",
-  preco: "Ágio: R$ 485.000,00",
-  destaque: "Investimento (Ágio)",
-  resumo: "Lote no Jardins Lyon (FGR) com Kit Fachada (Casas Jardins). Operação de ágio com valorização já obtida e números detalhados para análise.",
-  descricaoCompleta: `
-    Empreendimento: FGR Casas Jardins Marselha/Lyon SPE - LTDA
-    Produto: Lotes • Jardins Lyon (FGR) • Jardim Atlântico
-
-    ✅ KIT FACHADA (Casas Jardins)
-    O Kit Fachada é um diferencial do conceito Casas Jardins, que promove padronização estética,
-    valorização do condomínio e maior liquidez na revenda, preservando o alto padrão do empreendimento.
-
-    💰 NÚMEROS DA OPERAÇÃO (ÁGIO)
-    • Ágio: R$ 485.000,00
-    • Saldo devedor: R$ 1.122.933,60
-    • Valor total do contrato: R$ 1.607.933,60
-
-    • Comissão (5%): R$ 80.396,68
-    • Valor total líquido para você: R$ 404.603,32
-    • Valor investido: R$ 178.452,09 (já inclui a comissão da compra)
-    • Valorização obtida: R$ 226.151,23
-
-    Negócio indicado para investidor/compra planejada, com cessão/transferência conforme regras do empreendimento.
-  `,
-  caracteristicas: [
-    "Empreendimento: Jardins Lyon (FGR) • Casas Jardins",
-    "Região: Jardim Atlântico",
-    "Produto: Lote (Ágio / Investimento)",
-    "Kit Fachada (padronização e valorização)",
-    "Ágio: R$ 485.000,00",
-    "Saldo devedor: R$ 1.122.933,60",
-    "Valor total do contrato: R$ 1.607.933,60",
-    "Valor investido: R$ 178.452,09",
-    "Valorização obtida: R$ 226.151,23"
-  ],
-  fotos: [
-    "img/p14-1.jpg",
-    "img/p14-2.jpg"
-  ]
-},
-      {
-  id: "P012",
-  tipo: "Sobrado",
-  titulo: "Sobrado • Jardins Bolonha • Senador Canedo",
-  cidade: "Senador Canedo/GO",
-  bairro: "Jardins Bolonha",
-  preco: "R$ 1.730.000,00",
-  destaque: "Alto padrão",
-  resumo: "Sobrado de alto padrão no Jardins Bolonha, com 4 suítes, piscina privativa, varanda gourmet e lazer completo em condomínio fechado.",
-  descricaoCompleta: `
-    Sobrado de alto padrão localizado no condomínio Jardins Bolonha,
-    em Senador Canedo/GO.
-
-    Imóvel com 4 quartos, todos suítes, totalizando 6 banheiros.
-    Projeto moderno e sofisticado, com excelente distribuição
-    dos ambientes, varanda gourmet com churrasqueira a carvão
-    e piscina privativa, ideal para momentos de lazer e convivência.
-
-    Condomínio com segurança armada 24 horas e infraestrutura
-    completa de lazer, incluindo academia, campos de futebol,
-    quadras de tênis e poliesportiva, quiosques, playgrounds
-    e trilhas em meio à natureza.
-  `,
-  caracteristicas: [
-    "Condomínio Jardins Bolonha",
-    "Sobrado de alto padrão",
-    "04 quartos",
-    "04 suítes",
-    "06 banheiros",
-    "Varanda gourmet com churrasqueira a carvão",
-    "Piscina privativa",
-    "04 vagas de garagem",
-    "Área privativa: 360 m²",
-    "Área construída: 230 m²",
-    "Segurança armada 24h",
-    "Academia",
-    "Campos de futebol",
-    "Quadras de tênis e poliesportiva",
-    "Quiosques",
-    "Playgrounds",
-    "Trilhas ecológicas"
-  ],
-  fotos: [
-    "img/p12-1.jpg",
-    "img/p12-2.jpg",
-    "img/p12-3.jpg",
-    "img/p12-4.jpg",
-    "img/p12-5.jpg",
-    "img/p12-6.jpg",
-    "img/p12-7.jpg",
-    "img/p12-8.jpg",
-    "img/p12-9.jpg",
-    "img/p12-10.jpg"
-  ]
-},
-
       {
         id: "P001",
         tipo: "Apartamento",
@@ -737,7 +806,8 @@
         ],
         fotos: ["img/p5-1.jpg","img/p5-2.jpg","img/p5-3.jpg","img/p5-4.jpg","img/p5-5.jpg","img/p5-6.jpg","img/p5-7.jpg","img/p5-8.jpg","img/p5-9.jpg","img/p5-10.jpg"]
       },
-          {
+
+      {
   id: "P006",
   tipo: "Casa",
   titulo: "Casa Térrea • 4 Suítes • Setor Faiçalville • Próx. Av. Rio Verde",
@@ -773,7 +843,7 @@
     "img/p6-10.jpg"
   ]
 },
-      {
+{
   id: "P007",
   tipo: "Casa",
   titulo: "Casa Térrea • Cond. Parqville Pinheiros • Aparecida de Goiânia",
@@ -815,7 +885,7 @@
     "img/p7-12.jpg"
   ]
 },
-      {
+{
   id: "P008",
   tipo: "Casa",
   titulo: "Casa 3 Suítes • Cond. ParqVille Pinheiros • Aparecida de Goiânia",
@@ -864,7 +934,7 @@
     "img/p8-12.jpg"
   ]
 },
-      {
+{
   id: "P009",
   tipo: "Casa",
   titulo: "Casa Térrea • Cond. ParqVille Jacarandá • Aparecida de Goiânia",
@@ -930,7 +1000,7 @@
     "img/p9-10.jpg"
   ]
 },
-      {
+{
   id: "P010",
   tipo: "Casa",
   titulo: "Casa • Setor Flamingo • 3 Quartos • Próx. Jardim Presidente",
@@ -994,7 +1064,7 @@
   "img/p10-11.jpg"
   ]
 },
-      {
+{
   id: "P011",
   tipo: "Casa",
   titulo: "Casa Térrea • Jardim Montserrat • Aparecida de Goiânia",
@@ -1043,42 +1113,6 @@
     "img/p11-10.jpg",
     "img/p11-11.jpg"
 
-  ]
-},
-      {
-  id: "P016",
-  tipo: "Casa",
-  titulo: "Casa Térrea • Jardim Helvecia • Aparecida de Goiânia",
-  cidade: "Aparecida de Goiânia/GO",
-  bairro: "Jardim Helvecia",
-  preco: "R$ 549.900,00",
-  destaque: "Excelente oportunidade",
-  resumo: "Casa térrea no Jardim Helvecia com 3 quartos, suíte, pé-direito duplo, varanda gourmet e quintal amplo.",
-  descricaoCompleta: "Casa térrea localizada no Setor Jardim Helvecia, em Aparecida de Goiânia/GO. O imóvel conta com 3 quartos, sendo 1 suíte, sala ampla com pé-direito duplo, cozinha estilo americana, varanda gourmet, quintal grande e garagem para até 3 carros. Projeto funcional, ideal para quem busca conforto, espaço e excelente custo-benefício. Pronta para morar.",
-  caracteristicas: [
-    "03 quartos (sendo 01 suíte)",
-    "Sala ampla com pé-direito duplo",
-    "Cozinha estilo americana",
-    "Varanda gourmet",
-    "Quintal grande",
-    "03 banheiros",
-    "03 vagas de garagem",
-    "Área construída: 120 m²",
-    "Área do terreno: 250 m²",
-    "Excelente padrão construtivo"
-  ],
-  fotos: [
-    "img/p16-1.jpg",
-    "img/p16-2.jpg",
-    "img/p16-3.jpg",
-    "img/p16-4.jpg",
-    "img/p16-5.jpg",
-    "img/p16-6.jpg",
-    "img/p16-7.jpg",
-    "img/p16-8.jpg",
-    "img/p16-9.jpg",
-    "img/p16-10.jpg"
-    
   ]
 }
 
@@ -1250,5 +1284,77 @@
     q.addEventListener("input", render);
     render();
   </script>
+  <script>
+  (function(){
+    const WA_NUMBER = "5562998787270"; // Priscila
+
+    function esc(v){ return (v || "").toString().trim(); }
+
+    function buildMessage(data){
+      return [
+        "📌 *NOVO LEAD – Questionário (Site)*",
+        "",
+        "*Dados do cliente*",
+        `• Nome: ${data.nome}`,
+        `• WhatsApp: ${data.whats}`,
+        data.email ? `• E-mail: ${data.email}` : null,
+        data.localidade ? `• Localidade: ${data.localidade}` : null,
+        "",
+        "*Imóvel desejado*",
+        `1) Tipo: ${data.tipo_imovel}`,
+        `2) Cidade/Bairro: ${data.cidade_bairro}`,
+        `3) Finalidade: ${data.finalidade}`,
+        `4) Faixa de valor: ${data.faixa_valor}`,
+        `5) Pagamento: ${data.pagamento}`,
+        `6) Quartos (mín.): ${data.quartos}`,
+        `7) Vagas: ${data.vagas}`,
+        data.indispensavel ? `8) Indispensável: ${data.indispensavel}` : null,
+        `9) Prazo: ${data.prazo}`,
+        `10) Permuta: ${data.permuta}`,
+        data.obs ? "" : null,
+        data.obs ? `📝 Observações: ${data.obs}` : null,
+        "",
+        "✅ Enviado automaticamente pelo site priscilaalves.store"
+      ].filter(Boolean).join("\n");
+    }
+
+    const form = document.getElementById("leadForm");
+    if(!form) return;
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+
+      // validações mínimas
+      if(!esc(data.nome) || !esc(data.whats) || !esc(data.tipo_imovel) || !esc(data.cidade_bairro) || !esc(data.finalidade) || !esc(data.faixa_valor) || !esc(data.pagamento) || !esc(data.quartos) || !esc(data.vagas) || !esc(data.prazo) || !esc(data.permuta)){
+        alert("Preencha os campos obrigatórios (*) para enviar.");
+        return;
+      }
+
+      const msg = buildMessage({
+        nome: esc(data.nome),
+        whats: esc(data.whats),
+        email: esc(data.email),
+        localidade: esc(data.localidade),
+        obs: esc(data.obs),
+        tipo_imovel: esc(data.tipo_imovel),
+        cidade_bairro: esc(data.cidade_bairro),
+        finalidade: esc(data.finalidade),
+        faixa_valor: esc(data.faixa_valor),
+        pagamento: esc(data.pagamento),
+        quartos: esc(data.quartos),
+        vagas: esc(data.vagas),
+        indispensavel: esc(data.indispensavel),
+        prazo: esc(data.prazo),
+        permuta: esc(data.permuta)
+      });
+
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    });
+  })();
+</script>
+
 </body>
 </html>
