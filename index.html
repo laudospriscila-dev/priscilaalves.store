@@ -345,6 +345,57 @@
   color:#64748b;
   line-height:1.5;
 }
+    /* ===== Fix iOS / Mobile form ===== */
+@media (max-width: 640px) {
+
+  .lead-form__options{
+    display:grid !important;
+    grid-template-columns: 1fr !important;
+    gap:10px !important;
+  }
+
+  .lead-form__options label{
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
+    padding:10px 12px !important;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#f9fafb;
+    font-size:14px;
+    line-height:1.4;
+  }
+
+  .lead-form__options input[type="radio"]{
+    width:20px;
+    height:20px;
+    flex-shrink:0;
+  }
+
+  fieldset{
+    padding:10px !important;
+  }
+
+  legend{
+    font-size:14px !important;
+  }
+
+  .lead-form input,
+  .lead-form textarea{
+    font-size:16px; /* evita zoom automático do iOS */
+  }
+
+  .lead-form__actions{
+    flex-direction:column;
+  }
+
+  .lead-form__actions .btn{
+    width:100%;
+    justify-content:center;
+    font-size:16px;
+  }
+}
+
   </style>
 </head>
 
